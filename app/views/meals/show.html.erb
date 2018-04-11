@@ -5,5 +5,9 @@
 <h4><%= @meal.price %></h4>
 <p></p>
 
+<% if policy(Meal).edit? %>
 <%= link_to "edit", edit_meal_path %>
+
+<% end %>
+
 <%= link_to "delete", meal_path,  method: :delete, data: { confirm: 'Are you sure?' } %>
