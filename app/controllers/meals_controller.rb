@@ -28,7 +28,7 @@ class MealsController < ApplicationController
   def update
     @meal = Meal.find(params[:id])
     authorize @meal
-    if @meal.update
+    if @meal.update(meal_params)
       redirect_to meal_path(@meal)
     else
       render :new
@@ -39,7 +39,7 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     authorize @meal
     @meal.destroy
-    redirect_to root
+    redirect_to root_path
   end
 
   private
