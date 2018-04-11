@@ -14,7 +14,7 @@ class MealsController < ApplicationController
     @meal.user = current_user
     authorize @meal
     if @meal.save
-      redirect_to meal_path(@meal)
+      redirect_to profile_path(current_user)
     else
       render :new
     end
