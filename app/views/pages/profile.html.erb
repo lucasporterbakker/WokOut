@@ -1,0 +1,13 @@
+
+
+<%= @user.meals.each do |meal| %>
+  <p><%= meal.name %> (<%= meal.description %>)
+    <br>
+  <!-- <%= link_to "delete", meal_path(meal), method: :delete%></p> -->
+  <%= link_to "delete", meal_path,  method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<br>
+<br>
+
+<%= link_to "add a meal", new_meal_path(@meal), class: "btn-medium" %>
