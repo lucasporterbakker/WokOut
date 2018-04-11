@@ -37,9 +37,10 @@ class MealsController < ApplicationController
 
   def destroy
     @meal = Meal.find(params[:id])
+    @user = @meal.user
     authorize @meal
     @meal.destroy
-    redirect_to root_path
+    redirect_to profile_path(@user)
   end
 
   private
