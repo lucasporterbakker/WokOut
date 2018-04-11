@@ -1,7 +1,7 @@
-<%= form_for @meal do |f| %>
-  Name: <%= f.text_field :name %><br />
-  Description : <%= f.text_field :description %><br />
-  Category : <%= f.text_area :category %><br />
-  Price    : <%= f.text_field :price %><br />
-  <%= f.submit %>
+<%= simple_form_for(@meal) do |f| %>
+  Name <%= f.text_field :name %>
+  Description <%= f.text_area :description %>
+  Category <%= f.text_field :category %>
+  Price <%= f.text_field :price %>
+  <%= f.submit "add a meal", class: "btn btn-primary" %>
 <% end %>
