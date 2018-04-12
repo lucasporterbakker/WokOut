@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     @meal = Meal.find(params[:meal_id])
     @booking.user_id = current_user.id
     @booking.meal_id = @meal.id
+    authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -25,6 +26,7 @@ class BookingsController < ApplicationController
     @meal = @booking.meal
     # @booking.user_id = current_user.id
     # @booking.meal_id = @meal.id
+    authorize @booking
     @booking.destroy
     redirect_to profile_path(current_user)
   end
