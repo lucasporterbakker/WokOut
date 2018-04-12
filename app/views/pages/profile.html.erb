@@ -10,6 +10,8 @@
   </div>
 </div>
 
+<%= cl_image_tag @user.photo %>
+
 <br>
 <% @user.meals.each do |meal| %>
   <p><%= meal.name %> (<%= meal.description %>)
