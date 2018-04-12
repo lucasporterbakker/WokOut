@@ -6,6 +6,7 @@
   background-size: cover !important;
   display: flex;
   align-items: center;
+  background-attachment: fixed;
   justify-content: center;
 }
 
@@ -52,4 +53,31 @@
   border: 2px solid #F2F2F2;
   box-sizing: border-box;
   border-radius: 121px;
+}
+
+.alert {
+    padding: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-decoration: none;
+    color: #616668;
+    font-size: 14px;
+    background-color: white;
+    // color: #637784;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 3px;
+    color: #A1282E;
+    float: right;
+    font-size: 19px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
 }
