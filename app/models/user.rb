@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :bookings
   has_many :meals# Include default devise modules. Others available are:
   validates :first_name, presence: true
   validates :last_name, presence: true

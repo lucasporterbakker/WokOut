@@ -12,7 +12,7 @@ Meal.delete_all
 User.delete_all
 
 
-#Seeding Users:
+# Seeding Users:
 
 User.create(first_name: 'Jane', last_name: 'Wong', email: 'jwly1024@gmail.com', password: '123456', ischef: true)
 
@@ -22,10 +22,12 @@ end
 
 puts "created #{User.count} users"
 
-#Seeding Meals:
+# Seeding Meals:
+
+categories = %w(Sichuan Yunnan Xinjiang Hunan)
 
 15.times do
-  Meal.create(name: Faker::Food.dish, description: Faker::Food.description, price: [1..100].sample, user_id: User.all.sample.id)
+  Meal.create(name: Faker::Food.dish, category: categories.sample, description: Faker::Food.description, price: Faker::Number.between(1, 10), user_id: User.all.sample.id)
 end
 
 puts "created #{Meal.count} meals"

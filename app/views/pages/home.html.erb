@@ -4,10 +4,13 @@
     <p>Eat your homecooked heart out with random strangers you invite to your home</p>
     <div class="wrap">
       <div class="search">
-        <input type="text" class="searchTerm" placeholder="What are you looking for?">
-        <button type="submit" class="searchButton">
-          <i class="fa fa-search"></i>
-        </button>
+        <%= form_tag search_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search by Chef or Cuisine"
+          %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -24,100 +27,26 @@
 
 <div class="container">
   <div class="row">
+<% @meals.each do |meal| %>
+  <%= link_to profile_path(meal.user) do %>
     <div class="col-xs-12 col-sm-4">
       <div class = "chefcard"> <img src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9dd8da96be0724ab84e4147d428f6bba&auto=format&fit=crop&w=3276&q=80">
         <div class="chef-avatar"><img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/tuf9y3gbpec7pi2hayjn.jpg"></div>
-        <h5>Martin Tannenberger</h5>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
-          <div class="specialty"><h6>Specialties: Sichuan</h6></div>
-        </div>
-      <!-- insert <div class="card"> -->
-    </div>
-
-     <div class="col-xs-12 col-sm-4">
-      <div class = "chefcard"> <img src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9dd8da96be0724ab84e4147d428f6bba&auto=format&fit=crop&w=3276&q=80">
-        <div class="chef-avatar"><img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/udumjan8mdhk9ncegjbr.jpg"></div>
-        <h5>Trey Booth</h5>
-          <div class="setting">
+        <div class="card-text-grouping">
+          <h4> <%= meal.user.first_name %> <%= meal.user.last_name %> </h4>
+          <h5> <%= meal.name %> </h5>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
             <div class="specialty"><h6>Specialties: Sichuan</h6></div>
-          </div>
         </div>
-      <!-- insert <div class="card"> -->
-    </div>
-
-    <div class="col-xs-12 col-sm-4">
-      <div class = "chefcard"> <img src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9dd8da96be0724ab84e4147d428f6bba&auto=format&fit=crop&w=3276&q=80">
-        <div class="chef-avatar"><img src="https://avatars1.githubusercontent.com/u/35476613?v=4"></div>
-        <h5>Lucas Porter-Bakker</h5>
-          <div class="setting">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <div class="specialty"><h6>Specialties: Sichuan</h6></div>
-          </div>
         </div>
-      <!-- insert <div class="card"> -->
-    </div>
+    <% end %>
+  </div>
 
-  <div class="col-xs-12 col-sm-4">
-      <div class = "chefcard"> <img src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9dd8da96be0724ab84e4147d428f6bba&auto=format&fit=crop&w=3276&q=80">
-        <div class="chef-avatar"><img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/tuf9y3gbpec7pi2hayjn.jpg"></div>
-        <h5>Trey Booth</h5>
-          <div class="setting">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <div class="specialty"><h6>Specialties: Sichuan</h6></div>
-          </div>
-        </div>
-      <!-- insert <div class="card"> -->
-    </div>
-
-    <div class="col-xs-12 col-sm-4">
-      <div class = "chefcard"> <img src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9dd8da96be0724ab84e4147d428f6bba&auto=format&fit=crop&w=3276&q=80">
-        <div class="chef-avatar"><img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/yu5gomeqsb0caovo1kw9.jpg"></div>
-        <h5>Jane Wong</h5>
-          <div class="setting">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <div class="specialty"><h6>Specialties: Sichuan</h6></div>
-          </div>
-        </div>
-      <!-- insert <div class="card"> -->
-    </div>
-
-<div class="col-xs-12 col-sm-4">
-      <div class = "chefcard"> <img src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9dd8da96be0724ab84e4147d428f6bba&auto=format&fit=crop&w=3276&q=80">
-        <div class="chef-avatar"><img src="https://avatars1.githubusercontent.com/u/35476613?v=4"></div>
-        <h5>Lucas Porter-Bakker</h5>
-          <div class="setting">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <div class="specialty"><h6>Specialties: Sichuan</h6></div>
-          </div>
-        </div>
-      <!-- insert <div class="card"> -->
-    </div>
-
+<% end %>
 
 
   </div>
@@ -127,8 +56,3 @@
           <button class="btn btn-primary btn-xs" style="width: 100%; padding-top:5px; padding-bottom:5px;font-size:15px;font-weight:700" onclick="$('#indexSearchForm').submit();">Broswe All Chefs<span class="fa fa-hand-pointer-o" aria-hidden="true"></span></button>
         </div>
       </div>
-
-
-
-
-

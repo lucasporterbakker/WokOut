@@ -1,0 +1,35 @@
+<h3>Displaying results for: <%= @query %></h3>
+
+  <div class="search">
+    <%= form_tag search_path, method: :get do %>
+    <%= label_tag "Search again?" %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: ""
+      %>
+    <% end %>
+  </div>
+
+<div class="container">
+  <div class="row">
+<% @meals.each do |meal| %>
+  <%= link_to profile_path(meal.user) do %>
+    <div class="col-xs-12 col-sm-4">
+      <div class = "chefcard"> <img src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9dd8da96be0724ab84e4147d428f6bba&auto=format&fit=crop&w=3276&q=80">
+        <div class="chef-avatar"><img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/tuf9y3gbpec7pi2hayjn.jpg"></div>
+        <div class="card-text-grouping">
+          <h4> <%= meal.user.first_name %> <%= meal.user.last_name %> </h4>
+          <h5> <%= meal.name %> </h5>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <div class="specialty"><h6>Specialties: <%= meal.category %></h6></div>
+        </div>
+        </div>
+    <% end %>
+  </div>
+
+<% end %>
