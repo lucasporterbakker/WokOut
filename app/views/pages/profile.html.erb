@@ -16,7 +16,8 @@
 <% @user.meals.each do |meal| %>
   <p><%= meal.name %> (<%= meal.description %>)
     <br>
-  <%= link_to "delete", meal_path(meal), method: :delete%></p>
+  <%= link_to "delete", meal_path(meal),  method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></p>
+  <%= link_to "edit", edit_meal_path(meal) %>
 <% end %>
 
 <br>
