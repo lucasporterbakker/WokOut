@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   def home
     @meals = Meal.all
+    @users = User.all
   end
 
 
