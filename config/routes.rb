@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:destroy, :show]
 
+  get '/search', to: 'pages#search', as: 'search'
+
   root to: 'pages#home'
   get '/profile/:id' , to: "pages#profile", as: 'profile'
 

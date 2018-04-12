@@ -10,6 +10,8 @@ gem 'redis'
 
 gem 'devise'
 
+
+gem 'pg_search'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 

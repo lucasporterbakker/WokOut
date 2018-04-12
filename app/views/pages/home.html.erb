@@ -4,10 +4,13 @@
     <p>Eat your homecooked heart out with random strangers you invite to your home</p>
     <div class="wrap">
       <div class="search">
-      <input type="text" class="searchTerm" placeholder="What are you looking for?">
-      <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-      </button>
+        <%= form_tag search_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search by Chef or Cuisine"
+          %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -40,7 +43,6 @@
             <div class="specialty"><h6>Specialties: Sichuan</h6></div>
         </div>
         </div>
-      <!-- insert <div class="card"> -->
     <% end %>
   </div>
 
