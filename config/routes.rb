@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :bookings, except: [:index]
   end
 
+  get '/search', to: 'pages#search', as: 'search'
+
   root to: 'pages#home'
   get '/profile/:id' , to: "pages#profile", as: 'profile'
 
