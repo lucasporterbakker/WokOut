@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :meals do
-    resources :bookings, except: [:index]
+    resources :bookings, only: [:new, :create]
   end
+  resources :bookings, only: [:destroy, :show]
 
   root to: 'pages#home'
   get '/profile/:id' , to: "pages#profile", as: 'profile'
