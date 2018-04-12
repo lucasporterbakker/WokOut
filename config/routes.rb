@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get '/search', to: 'pages#search', as: 'search'
 
+  get '/dashboard/:id' , to: "pages#dashboard", as: 'dashboard'
+
   root to: 'pages#home'
   get '/profile/:id' , to: "pages#profile", as: 'profile'
 
