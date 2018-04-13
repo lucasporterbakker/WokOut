@@ -18,20 +18,25 @@
   </a>
 </div>
 
-<br>
-<h4>Chefs you have booked:</h4>
-<% @user.bookings.each do |booking| %>
-<h5><%= booking.meal.user.first_name %> <%= booking.meal.user.last_name %></h5>
-<li>Date: <%= booking.date %></li>
-<li><%= link_to "Cancel Booking", booking_path(booking), method: :delete, data: { confirm: 'Are you sure you want to cancel this booking?' } %>
-</li>
-<% end %>
+<div class="tabbed-bookings">
 
-<br>
+  <br>
+  <h4>Chefs you have booked:</h4>
+  <% @user.bookings.each do |booking| %>
+  <h5><%= booking.meal.user.first_name %> <%= booking.meal.user.last_name %></h5>
+  <h6>Booked Dish: <%= booking.meal.name %></h6>
+  <li>Date: <%= booking.date.strftime('%A %B %e, %l:%M %p') %></li>
+  <li><%= link_to "Cancel Booking", booking_path(booking), method: :delete, data: { confirm: 'Are you sure you want to cancel this booking?' } %>
+  </li>
+  <% end %>
 
-<h4>Upcoming gigs:</h4>
-<% @bookings.each do |booking| %>
-<h5><%= booking.user.first_name %> <%= booking.user.last_name %></h5>
-<li>Requested Dish: <%= booking.meal.name %></li>
-<li>Date: <%= booking.date  %></li>
-<% end %>
+  <br>
+
+  <h4>Upcoming gigs:</h4>
+  <% @bookings.each do |booking| %>
+  <h5><%= booking.user.first_name %> <%= booking.user.last_name %></h5>
+  <h6>Requested Dish: <%= booking.meal.name %></h6>
+  <li>Date: <%= booking.date.strftime('%A %B %e, %l:%M %p') %></li>
+  <% end %>
+
+</div>

@@ -1,4 +1,4 @@
 <%= simple_form_for [@meal, @booking] do |f| %>
-  Date <%= f.input :date %>
+  Date <%= f.input :date, discard_second: true %>
   <%= f.submit "Book", class: "btn btn-primary" %>
 <% end %>
