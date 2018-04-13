@@ -1,59 +1,79 @@
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=74ac7c1aa35dc36f50cc1ac7517c70a7&auto=format&fit=crop&w=1650&q=80');">
-
-    <div class="banner-content">
-      <h1>WokOut</h1>
-      <p>Eat your homecooked heart out with random strangers you invite to your home</p>
-      <div class="wrap">
-        <div class="search">
-          <%= form_tag search_path, method: :get do %>
-          <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-            placeholder: "Search by Chef or Cuisine"
-            %>
-            <button type="submit" class="searchButton">
-              <i class="fa fa-search"></i>
-              <% end %>
-            </button>
-          </div>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=74ac7c1aa35dc36f50cc1ac7517c70a7&auto=format&fit=crop&w=1650&q=80');">
+  <div class="banner-content">
+    <h1>WokOut</h1>
+    <p>Eat your homecooked heart out with random strangers you invite to your home</p>
+    <div class="wrap">
+      <div class="search">
+        <%= form_tag search_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+          placeholder: "Search by Chef or Cuisine"
+          %>
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+            <% end %>
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-<main class="page-content">
-       <%= render 'chef_intro' %>
+  <main class="page-content">
+    <%= render 'chef_intro' %>
 
 
-<div class="container">
-  <div class="row">
-<% @meals.each do |meal| %>
-  <%= link_to profile_path(meal.user) do %>
-    <div class="col-xs-12 col-sm-4">
-      <div class = "chefcard"> <img src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9dd8da96be0724ab84e4147d428f6bba&auto=format&fit=crop&w=3276&q=80">
-        <div class="chef-avatar"><img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/tuf9y3gbpec7pi2hayjn.jpg"></div>
-        <div class="card-text-grouping">
-          <h4> <%= meal.user.first_name %> <%= meal.user.last_name %> </h4>
-          <h5> <%= meal.name %> </h5>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <div class="specialty"><h6>Specialties: Sichuan</h6></div>
+    <div class="row" style="margin-bottom:40px;margin-top:50px;">
+      <div class="col-xs-10 col-md-2 col-md-offset-5 col-xs-offset-1">
+        <button class="btn btn-primary btn-xs" style="width: 100%; padding-top:5px; padding-bottom:5px;font-size:15px;font-weight:700" onclick="$('#indexSearchForm').submit();">Book a Chef  <span class="fa fa-hand-pointer-o" aria-hidden="true"></span></button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <% @meals.each do |meal| %>
+        <%= link_to profile_path(meal.user) do %>
+        <div class="col-xs-12 col-sm-4">
+          <div class = "chefcard"> <img src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9dd8da96be0724ab84e4147d428f6bba&auto=format&fit=crop&w=3276&q=80">
+            <div class="chef-avatar"><img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/tuf9y3gbpec7pi2hayjn.jpg"></div>
+            <div class="card-text-grouping">
+              <h4> <%= meal.user.first_name %> <%= meal.user.last_name %> </h4>
+              <h5> <%= meal.name %> </h5>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <div class="specialty"><h6>Specialties: <%= meal.category %></h6></div>
+            </div>
+          </div>
+          <% end %>
         </div>
-        </div>
-    <% end %>
-  </div>
 
-<% end %>
+        <% end %>
 
 
-  </div>
+      </div>
 
-  <div class="row" style="margin-bottom:55px;margin-top:50px;">
+      <div class="row" style="margin-bottom:55px;margin-top:50px;">
         <div class="col-xs-10 col-md-2 col-md-offset-5 col-xs-offset-1">
-          <button class="btn btn-primary btn-xs" style="width: 100%; padding-top:10px; padding-bottom:10px;font-size:15px;font-weight:700" onclick="$('#indexSearchForm').submit();">Broswe All Chefs<span class="fa fa-hand-pointer-o" aria-hidden="true"></span></button>
+          <button class="btn btn-primary btn-xs" style="width: 100%; padding-top:10px; padding-bottom:10px;font-size:15px;font-weight:700" onclick="$('#indexSearchForm').submit();">Broswe All Chefs <span class="fa fa-hand-pointer-o" aria-hidden="true"></span></button>
         </div>
       </div>
-<%= render 'footer' %>
+
+      <!-- <div class="footer-banner" style="background-image: url(<%= image_path("logo-gradient.png") %>); linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%)">
+      </div> -->
+
+  <div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fa fa-github"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-pinterest"></i></a>
+  </div>
+  <div class="footer-copyright">
+    <i class="fa fa-heart"></i>  WokOut
+  </div>
+
+</div>
