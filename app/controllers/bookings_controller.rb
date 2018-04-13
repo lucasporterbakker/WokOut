@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
+    redirect_to dashboard_path(current_user)
   end
 
   def new
@@ -28,7 +29,7 @@ class BookingsController < ApplicationController
     # @booking.meal_id = @meal.id
     authorize @booking
     @booking.destroy
-    redirect_to profile_path(current_user)
+    redirect_to dashboard_path(current_user)
   end
 
   private
