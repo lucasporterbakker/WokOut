@@ -8,13 +8,15 @@
   align-items: center;
   background-attachment: fixed;
   justify-content: center;
+  overflow:hidden;
+  width: 100%
 }
 
 .banner h1 {
-  font-size: 85px;
+  font-size: 100px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-  margin-top: -50px;
+  margin-top: -90px;
 }
 
 .banner p {
