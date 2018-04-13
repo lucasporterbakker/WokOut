@@ -51,6 +51,7 @@
   height: 200px;
   background: url(tuf9y3gbpec7pi2hayjn.jpg);
   border: 2px solid #F2F2F2;
+  margin-right: 3px;
   box-sizing: border-box;
   border-radius: 121px;
 }
@@ -80,4 +81,8 @@
 /* When moving the mouse over the close button */
 .closebtn:hover {
     color: black;
+}
+
+.pic-border {
+  border: 2px solid #F2F2F2;
 }
