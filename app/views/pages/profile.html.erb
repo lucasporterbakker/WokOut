@@ -1,26 +1,49 @@
 <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e0245bb4e87077312cc3d102e68c1efd&auto=format&fit=crop&w=800&q=60');">
   <div class="banner-content">
     <div class="banner-profile">
-
+      <%= cl_image_tag @user.photo, class: "banner-profile" %>
   </div>
   <br>
   <br>
   <br>
-  <a class="btn-medium btn-lg">Book Jane Wong</a>
+  <h2><%= @user.first_name %>
+    <br>
+    <%= @user.last_name %></a></h2>
   </div>
 </div>
 
-<%= cl_image_tag @user.photo %>
 
 <br>
-<% @user.meals.each do |meal| %>
-  <p><%= link_to meal.name, meal_path(meal) %> (<%= meal.description %>)
-    <br>
-  <%= link_to "delete", meal_path(meal),  method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></p>
-  <%= link_to "edit", edit_meal_path(meal) %>
-  <%= link_to "Book", new_meal_booking_path(meal) %>
-<% end %>
-<br>
 
 
-<%= link_to "add a meal", new_meal_path(@meal), class: "btn-medium" %>
+
+<!-- ..... -->
+
+
+
+<div class="card-container">
+  <% @user.meals.each do |meal| %>
+  <div class="card u-clearfix">
+    <div class="card-body">
+
+      <h2 class="card-title"><%= meal.name %></h2>
+      <span class="card-description subtle"><%= meal.description %></span>
+      <% if user_signed_in? %>
+        <div class="card-read"><%= link_to "Book", new_meal_booking_path(meal) %></div>
+        <span> <%= link_to "edit", edit_meal_path(meal) %>  <%= link_to "delete", meal_path(meal),  method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></span>
+      <% end %>
+    </div>
+
+      <%= cl_image_tag meal.picture, class: 'card-media' %>
+  </div>
+  <div class="card-shadow"></div>
+  <br>
+  <% end %>
+  <br>
+</div>
+
+
+
+<div class="button-container">
+  <%= link_to "add a meal", new_meal_path(@meal), class: "btn btn-medium" %>
+</div>
