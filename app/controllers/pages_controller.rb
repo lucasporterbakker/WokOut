@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   def home
     @meals = Meal.all
   end
-
+#
   def search
     if params[:query].present?
       sql_query = "meals.category ILIKE :query OR meals.name ILIKE :query OR meals.description ILIKE :query OR users.first_name ILIKE :query OR users.last_name ILIKE :query"
@@ -17,9 +17,12 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+
+    # @meal = Meal.find(params[:meal_id])
     @user = User.find(params[:id])# find user by ID
     # '/profile/:id', to: pages#profile
     # profile_path(user)
+    @bookings = Booking.joins(:meal).where('meals.user_id = ?', current_user.id)
   end
 
   def profile
